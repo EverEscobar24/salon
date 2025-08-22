@@ -1,177 +1,235 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scarlett Nails | Uñas acrílicas, semipermanentes y más</title>
-  <meta name="description" content="Scarlett Nails en Girón, Santander. Uñas acrílicas, semipermanentes, press on y manicure tradicional. Agenda por WhatsApp.">
-  <meta name="robots" content="index,follow">
-  <meta property="og:title" content="Scarlett Nails">
-  <meta property="og:description" content="Diseños de uñas con estilo y elegancia. Agenda por WhatsApp.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="images/acrilicas.png">
-  <meta property="og:url" content="/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scarlett Nails | Salón de Uñas</title>
+  <meta name="description" content="Scarlett Nails - Manicure, uñas acrílicas, semipermanentes, press on, poligel y recubrimiento en Girón, Santander." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --rosa: #e91e63;
-      --rosa-oscuro: #c2185b;
-      --rosa-claro: #fcd6ec;
-      --fondo: #fffafc;
-      --texto: #333;
+    :root{
+      --bg:#ffeef7; /* Rosa clarito de fondo */
+      --fg:#1a1a1a;
+      --fucsia:#ff00a8;
+      --fucsia-600:#e00093;
+      --fucsia-700:#c40080;
+      --muted:#6f6f6f;
+      --card:#ffffff;
+      --shadow:0 10px 30px rgba(255,0,168,.15);
+      --radius:18px;
     }
     *{box-sizing:border-box}
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--fondo);
-      color: var(--texto);
-      border: 10px solid #f8b6d4;
-    }
-    header {
-      background: linear-gradient(135deg, #f8b6d4, var(--rosa-claro));
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-    header h1 {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      color: #fff;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-      animation: float 3s ease-in-out infinite;
-      margin: 0;
-    }
-    header p {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      margin-top: 15px;
-      color: #fff;
-      font-weight: 500;
-      animation: fadeIn 3s ease-in-out;
-    }
-    .btn-contacto {
-      display: inline-block;
-      margin-top: 22px;
-      padding: 12px 26px;
-      background: var(--rosa);
-      color: #fff;
-      font-size: 1rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      box-shadow: 0 0 15px rgba(233, 30, 99, 0.6);
-      will-change: transform;
-    }
-    .btn-contacto:hover { background: var(--rosa-oscuro); transform: translateY(-2px) scale(1.04); box-shadow: 0 8px 22px rgba(233,30,99,.45); }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-    .burbuja {
-      position: absolute; bottom: -150px; background: rgba(255,255,255,.28);
-      border-radius: 50%; animation: subir 18s linear infinite;
-    }
-    @keyframes subir { 0%{transform: translateY(0) scale(1); opacity: 1;} 100%{transform: translateY(-900px) scale(1.4); opacity: 0;} }
-    .burbuja:nth-child(1){ width: 80px; height: 80px; left: 10%; animation-duration: 22s; }
-    .burbuja:nth-child(2){ width: 100px; height: 100px; left: 30%; animation-duration: 26s; }
-    .burbuja:nth-child(3){ width: 60px; height: 60px; left: 50%; animation-duration: 19s; }
-    .burbuja:nth-child(4){ width: 120px; height: 120px; left: 70%; animation-duration: 30s; }
-    .burbuja:nth-child(5){ width: 90px; height: 90px; left: 88%; animation-duration: 24s; }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--fucsia);text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92%);margin-inline:auto}
 
-    .wrap { max-width: 1200px; margin-inline: auto; padding-inline: 20px; }
-    .servicios { padding: 50px 0; text-align: center; }
-    .servicios h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0 0 28px; color: var(--rosa-oscuro); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px; max-width: 1100px; margin: auto;
+    /* Header */
+    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.9);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid #f3f3f3}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:42px;height:42px;border-radius:50%;background:radial-gradient(120% 120% at 30% 30%, #ffd6f1 0%, #ff9bd9 45%, #ff00a8 100%);box-shadow:var(--shadow)}
+    .brand h1{margin:0;font-size:1.2rem;font-weight:800}
+    .chip{font-size:.75rem;background:#ffe7f6;color:var(--fucsia-700);padding:6px 10px;border-radius:999px}
+
+    /* Botones */
+    .cta{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:none;border-radius:999px;padding:12px 18px;font-weight:600;cursor:pointer;transition:transform .08s ease, box-shadow .2s ease}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--fucsia);color:white;box-shadow:var(--shadow)}
+    .btn-primary:hover{background:var(--fucsia-600)}
+    .btn-outline{background:transparent;color:var(--fucsia-700);border:2px solid #ffd0ef}
+    .btn-outline:hover{border-color:var(--fucsia);color:var(--fucsia)}
+
+    /* HERO PARALLAX + ANIMACIONES */
+    .hero{position:relative;min-height:68vh;display:grid;place-items:center;isolation:isolate;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,238,247,0.9) 70%);z-index:-1}
+    .hero::after{content:"";position:absolute;inset:-10%;z-index:-2;background-image:url('https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1600&auto=format&fit=crop');background-size:cover;background-position:center;background-attachment:fixed;filter:saturate(1.05) contrast(1.02)}
+    /* Zoom lento */
+    @keyframes slowZoom { 0%{transform:scale(1)} 100%{transform:scale(1.12)} }
+    .hero::after{animation:slowZoom 18s ease-in-out infinite alternate}
+    /* Fade-in + flotación del contenido */
+    @keyframes fadeUp { from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:translateY(0)} }
+    @keyframes floaty { 0%{transform:translateY(0)} 50%{transform:translateY(-6px)} 100%{transform:translateY(0)} }
+    .hero .content{animation:fadeUp .9s ease-out both}
+    .hero .content .cta{animation:floaty 4s ease-in-out 1s infinite}
+    .hero h2{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 10px;font-weight:800;text-align:center}
+    .hero p{margin:0 0 22px;color:var(--muted);text-align:center}
+
+    /* Secciones */
+    section{padding:36px 0}
+    .section-title{font-size:1.6rem;margin:0 0 14px;font-weight:800}
+    .sub{color:var(--muted);margin:0 0 22px}
+
+    /* Cards y grids */
+    .grid{display:grid;gap:16px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--card);border:1px solid #f3f3f3;border-radius:var(--radius);padding:16px;box-shadow:0 8px 16px rgba(0,0,0,.04)}
+    .card h3{margin:.25rem 0 .5rem;font-size:1.05rem}
+    .card img{border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);margin:8px 0}
+    .badge{display:inline-block;background:#ffe7f6;color:var(--fucsia-700);padding:4px 8px;border-radius:999px;font-size:.75rem;font-weight:600}
+
+    /* Galería */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill, minmax(200px,1fr));gap:14px}
+    .gallery img{width:100%;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .25s ease}
+    .gallery img:hover{transform:scale(1.05)}
+    .btn-galeria{display:inline-block;margin-top:24px;background:linear-gradient(135deg,#ff99cc,#ff4f91);color:#fff;padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 6px 14px rgba(255,79,145,.35);transition:transform .2s ease, box-shadow .2s ease}
+    .btn-galeria:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 20px rgba(255,79,145,.45)}
+
+    /* Mapa */
+    .map{border:0;width:100%;height:360px;border-radius:var(--radius);box-shadow:0 10px 24px rgba(0,0,0,.06)}
+
+    /* Footer */
+    footer{padding:28px 0;border-top:1px solid #f2f2f2;color:#555}
+
+    /* Responsive */
+    @media (max-width:920px){
+      .hero{min-height:60vh}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      .hero::after{background-attachment:scroll}
     }
-    .card {
-      background: #fff; border-radius: 16px;
-      box-shadow: 0 5px 14px rgba(0,0,0,.1); overflow: hidden;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 14px 28px rgba(0,0,0,.12); }
-    .card img { width: 100%; height: 240px; object-fit: cover; display:block; }
-    .card h3 { margin: 14px 0 18px; color: var(--rosa); font-size: 1.05rem; }
-    .contacto { background: var(--rosa-claro); text-align: center; padding: 50px 20px; margin-top: 46px; }
-    .contacto h2 { font-size: clamp(1.6rem, 3vw, 2rem); margin-bottom: 14px; color: var(--rosa-oscuro); }
-    .redes { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
-    .redes a {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 18px; border-radius: 28px; background: var(--rosa); color: #fff;
-      text-decoration: none; font-weight: 500; transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-      font-size: .98rem; box-shadow: 0 0 10px rgba(233,30,99,.4);
-    }
-    .redes a:hover { background: var(--rosa-oscuro); transform: translateY(-2px); box-shadow: 0 10px 18px rgba(233,30,99,.45); }
-    .redes img { width: 20px; height: 20px; }
-    footer{ text-align:center; font-size:.85rem; color:#666; padding:22px 12px; }
+    @media (max-width:620px){.grid-3,.grid-2{grid-template-columns:1fr}}
   </style>
+  
 </head>
 <body>
   <header>
-    <h1>💅 Scarlett Nails</h1>
-    <p>Embellece tus manos con estilo y elegancia</p>
-    <a href="#contacto" class="btn-contacto">📲 Agenda tu cita</a>
-
-    <div class="burbuja"></div>
-    <div class="burbuja"></div>
-    <div class="burbuja"></div>
-    <div class="burbuja"></div>
-    <div class="burbuja"></div>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Scarlett Nails</h1>
+          <span class="chip">Girón • Santander</span>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn btn-outline" href="https://wa.me/573209535874" target="_blank" rel="noopener" aria-label="WhatsApp">💬 WhatsApp</a>
+        <a class="btn btn-primary" href="https://www.instagram.com/scarlett_nails_03?igsh=MTJqZDMwdXQ2bXlkOQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">📸 Instagram</a>
+      </div>
+    </div>
   </header>
 
-  <main class="wrap">
-    <section class="servicios" id="servicios">
-      <h2>✨ Nuestros Servicios ✨</h2>
-      <div class="grid">
+  <main>
+    <!-- HERO -->
+    <section class="hero parallax">
+      <div class="container content">
+        <h2>Uñas que cuentan tu estilo ✨</h2>
+        <p>Manicure profesional y diseño de uñas en un espacio cómodo y acogedor. Agenda por WhatsApp o conócenos en Instagram.</p>
+        <div class="cta" style="justify-content:center">
+          <a class="btn btn-primary" href="https://wa.me/573209535874" target="_blank" rel="noopener">Agendar por WhatsApp</a>
+          <a class="btn btn-outline" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="container">
+      <h2 class="section-title">Nuestros servicios</h2>
+      <p class="sub">Trabajamos con productos de alta calidad para un acabado impecable y duradero.</p>
+      <div class="grid grid-3">
         <article class="card">
-          <img src="images/tradicional.png" alt="Manicure tradicional">
-          <h3>Manicure Tradicional</h3>
+          <h3>Manicure tradicional</h3>
+          <img src="4f694fc7-0d65-4ea8-9137-c9431a77ff73.png" alt="Manicure tradicional Scarlett Nails" />
+          <p class="sub">Limpieza, limado, cutícula y esmaltado clásico.</p>
+          <span class="badge">Clásico</span>
         </article>
         <article class="card">
-          <img src="images/acrilicas.png" alt="Uñas acrílicas">
-          <h3>Uñas Acrílicas</h3>
+          <h3>Uñas acrílicas</h3>
+          <img src="3c77fb62-b545-4599-8518-0994de8ed5e5.png" alt="Uñas acrílicas Scarlett Nails" />
+          <p class="sub">Estructura resistente y formas a tu gusto.</p>
+          <span class="badge">Alta duración</span>
         </article>
         <article class="card">
-          <img src="images/semipermanentes.png" alt="Uñas semipermanentes">
-          <h3>Uñas Semipermanentes</h3>
+          <h3>Esmalte semipermanente</h3>
+          <img src="dbdcb638-9e5c-4a0e-8cd3-db80646cb036.png" alt="Esmalte semipermanente Scarlett Nails" />
+          <p class="sub">Color intenso con brillo por semanas.</p>
+          <span class="badge">Favorito</span>
         </article>
         <article class="card">
-          <img src="images/presson.png" alt="Uñas press on">
-          <h3>Press On</h3>
-        </article>
-        <article class="card">
-          <img src="images/recubrimiento.png" alt="Recubrimiento">
           <h3>Recubrimiento</h3>
+          <img src="aaaf5f9a-174e-4f6f-a464-5023b73c85e1.png" alt="Recubrimiento Scarlett Nails" />
+          <p class="sub">Protege y fortalece tu uña natural.</p>
+          <span class="badge">Cuidado</span>
+        </article>
+        <article class="card">
+          <h3>Press on</h3>
+          <img src="e2afca2c-fd27-45d2-a1ec-b230204b81cb.png" alt="Press on Scarlett Nails" />
+          <p class="sub">Sets personalizados listos para usar.</p>
+          <span class="badge">Rápido</span>
+        </article>
+        <article class="card">
+          <h3>Poligel</h3>
+          <p class="sub">Ligero, flexible y natural al tacto.</p>
+          <span class="badge">Tendencia</span>
         </article>
       </div>
     </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="container">
+      <h2 class="section-title">Galería de Diseños</h2>
+      <p class="sub">Inspírate con algunos de nuestros trabajos más recientes.</p>
+      <div class="gallery">
+        <img src="009d0e22-73eb-424d-a430-cefae269e4c2.png" alt="Diseño de uñas 1" />
+        <img src="352cf503-b9bb-46a9-8aa1-ca20b39bb353.png" alt="Diseño de uñas 2" />
+        <img src="c9c2f6a8-50b7-45d1-886a-3bc55106e588.png" alt="Diseño de uñas 3" />
+        <img src="12f88e36-d972-440e-8b88-a02c37659fe3.png" alt="Diseño de uñas 4" />
+        <img src="39945a8c-6937-4f62-bcf4-b34c157ee044.png" alt="Diseño de uñas 5" />
+        <img src="6fd2d9f4-f85d-4b1f-90ea-b782aea68832.png" alt="Diseño de uñas 6" />
+        <img src="5c059961-8e09-4edf-be62-ef6b766b0ed1.png" alt="Diseño de uñas 7" />
+      </div>
+      <a class="btn-galeria" href="https://co.pinterest.com/pin/7951736837842756/" target="_blank" rel="noopener">Ver más diseños</a>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section id="ubicacion" class="container">
+      <h2 class="section-title">¿Dónde estamos?</h2>
+      <p class="sub">Cl 10B #23A-4, Girón, Santander · <a href="https://www.google.com/maps/place/Cl+10B+%2323a-4,+Gir%C3%B3n,+Santander/@7.0556439,-73.1710395,17z/data=!3m1!4b1!4m6!3m5!1s0x8e683ebc9c32cd6d:0x165db4d816a8251e!8m2!3d7.0556386!4d-73.1684646!16s%2Fg%2F11x7hs0ylz?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ver en Google Maps</a></p>
+      <iframe class="map" loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Cl%2010B%20%2323A-4%2C%20Gir%C3%B3n%2C%20Santander&output=embed"></iframe>
+    </section>
   </main>
 
-  <section id="contacto" class="contacto">
-    <h2>📲 Contáctanos</h2>
-    <p>Girón, Santander • Atención con cita previa</p>
-    <div class="redes">
-      <a href="https://wa.me/573209535874" target="_blank" rel="noopener">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"> WhatsApp
-      </a>
-      <a href="https://www.instagram.com/scarlett_nails_03?igsh=MTJqZDMwdXQ2bXlkOQ%3D%3D&utm_source=qr" target="_blank" rel="noopener">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"> Instagram
-      </a>
-      <a href="https://www.google.com/maps/place/Cl+10B+%2323a-4,+Gir%C3%B3n,+Santander/@7.0556439,-73.1710395,17z/data=!3m1!4b1!4m6!3m5!1s0x8e683ebc9c32cd6d:0x165db4d816a8251e!8m2!3d7.0556386!4d-73.1684646!16s%2Fg%2F11x7hs0ylz?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
-        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Maps"> Google Maps
-      </a>
-    </div>
-  </section>
-
   <footer>
-    © <span id="year"></span> Scarlett Nails · Todos los derechos reservados
+    <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between">
+      <p style="margin:0">© <span id="year"></span> Scarlett Nails. Todos los derechos reservados.</p>
+      <div class="cta">
+        <a class="btn btn-outline" href="https://wa.me/573209535874" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn btn-primary" href="https://www.instagram.com/scarlett_nails_03?igsh=MTJqZDMwdXQ2bXlkOQ%3D%3D&utm_source=qr" target="_blank" rel="noopener">📸 Instagram</a>
+      </div>
+    </div>
   </footer>
 
   <script>
+    // Año dinámico
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  
+  <!-- Botón flotante de Reserva -->
+  <a class="fab-reserva" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Igbj56yDqz-u0Ob1NBtVoBhRfL21vEcAOJg-ehCM0AZOf2H9z4lpfVkZd488eor7iSP_tn9XV" target="_blank" rel="noopener" aria-label="Reservar cita en Google Calendar">
+    <span class="fab-icon" aria-hidden="true">
+      <!-- Icono calendario SVG -->
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1Zm12 7H5v9a1 1 0 0 0 1 1h12a 1 1 0 0 0 1-1V9ZM6 7h12V6H6v1Z"/>
+      </svg>
+    </span>
+    <span>Reservar cita</span>
+  </a>
+  <style>
+    .fab-reserva{
+      position:fixed;right:18px;bottom:18px;z-index:9999;
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,#ff99cc,#ff4f91);
+      color:#fff;padding:12px 16px;border-radius:999px;
+      font-weight:800;text-decoration:none;box-shadow:0 12px 28px rgba(255,79,145,.45);
+      transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .fab-reserva:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 32px rgba(255,79,145,.55);filter:saturate(1.05)}
+    .fab-icon{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;color:#ff4f91}
+    @keyframes bell{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+    .fab-reserva:hover .fab-icon{animation:bell .6s ease}
+    @media (max-width:540px){.fab-reserva{right:12px;bottom:12px;padding:10px 14px}.fab-icon{width:28px;height:28px}}
+  </style>
 </body>
 </html>
